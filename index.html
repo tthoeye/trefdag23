@@ -3,14 +3,38 @@
     <title>District09 @Trefdag</title>
     <!-- Replace 'YOUR_API_KEY' with your Google Maps API key -->
     <style>
-        /* Style the map container to take up the entire screen */
+        
+        /* Remove all margins and padding */
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Set the size of the map to fill the entire page */
+        html, body {
+            height: 100vh;
+        }
+        /* Create a fixed header that is 10% of the viewport height */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10vh; /* 10% of the viewport height */
+            background-color: #409ec6; /* Header background color */
+            color: #fff; /* Header text color */
+            text-align: center;
+            z-index: 1; /* Ensure the header is above the map */
+        }
+        /* Set the size of the map container */
         #map {
             height: 100vh;
-            width: 100%;
         }
     </style>
 </head>
+
 <body>
+    <header></header>
     <div id="map"></div>
 
     <script>
@@ -126,24 +150,27 @@
             });
             // Locations
             const locations = [
-                { lat: 51.058041359707445, lng: 3.730096393849001, title: "De Gentse Feesten", info: "Het programma van de Gentse Feesten raadplegen? De Gentse Feestenwebsite is 1 van de <b>600 applicaties</b> die District09 beheert.", img: "img/1.jpg" },
-                { lat: 34.0522, lng: -118.2437, title: "Visit Gent", info: "Toeristen rekenen op District09 om <b>digitaal de juiste informatie te vinden</b> voor hun bezoek aan Gent, via de website visit.gent of via de <b>datatafel</b> in het Tourist Information Center.", img: "img/2.jpg" },
-                { lat: 41.8781, lng: -87.6298, title: "Stadskantoor", info: "Het nieuwe Stadskantoor aan de Zuid, werd door District09 uitgerust met internetconnectie, <b>digital signage</b>, een transparante led wall en moderne vergaderapparatuur. De restwarmte van het ondergrondse <b>datacenter</b> verwarmt het gebouw.", img: "img/3.jpg" },
+                { lat: 51.058041359707445, lng: 3.730096393849001, title: "De Gentse Feesten", info: "Het programma van de Gentse Feesten raadplegen? De Gentse Feestenwebsite is 1 van de <b>600 applicaties</b> die District09 beheert.", id: 1 },
+                { lat: 34.0522, lng: -118.2437, title: "Visit Gent", info: "Toeristen rekenen op District09 om <b>digitaal de juiste informatie te vinden</b> voor hun bezoek aan Gent, via de website visit.gent of via de <b>datatafel</b> in het Tourist Information Center.", id: 2 },
+                { lat: 41.8781, lng: -87.6298, title: "Stadskantoor", info: "Het nieuwe Stadskantoor aan de Zuid, werd door District09 uitgerust met internetconnectie, <b>digital signage</b>, een transparante led wall en moderne vergaderapparatuur. De restwarmte van het ondergrondse <b>datacenter</b> verwarmt het gebouw.", id: 3 },
                 // Add more locations as needed
             ];
 
             // Optionally, you can add markers or other map features here
             // For example, to add a marker at the center coordinates:
             locations.forEach(location => {
-                const pinBackground = new google.maps.PinElement({
-                    background: '#FBBC04',
-                });
+                const markerIcon = {
+                    url: 'img/' + location.id + '.svg', // Replace with the path to your SVG marker file
+                    scaledSize: new google.maps.Size(48, 48), // Adjust the size as needed
+                    origin: new google.maps.Point(0, 0), // Marker image origin
+                    anchor: new google.maps.Point(24, 24) // Marker image anchor point
+                };
                 
-                const marker = new google.maps.AdvancedMarkerElement({
+                const marker = new google.maps.Marker({
                     position: location, // Marker position
                     map: map, // Map to add the marker to
-                    content: pinBackground.element,
                     title: location.info, // Marker title (tooltip)
+                    icon: markerIcon
                 });
 
                 // Create an info window for the marker

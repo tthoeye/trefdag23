@@ -1,0 +1,167 @@
+<html>
+<head>
+    <title>District09 @Trefdag</title>
+    <!-- Replace 'YOUR_API_KEY' with your Google Maps API key -->
+    <style>
+        /* Style the map container to take up the entire screen */
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+
+    <script>
+        function initMap() {
+            // Specify the coordinates for the center of the map
+            var center = { lat: 51.0492427, lng: 3.7218865}; // Change these coordinates to the location you want
+
+            // Create a new map with the center coordinates and zoom level
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: center,
+                zoom: 14, // You can adjust the zoom level as needed
+                styles: [
+                    {
+                        "featureType": "all",
+                        "elementType": "labels.text",
+                        "stylers": [
+                            {
+                                "color": "#878787"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    { 
+                        "featureType": "poi.park",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    { 
+                        "featureType": "poi.park",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                            {
+                                "color": "#BAD042"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "all",
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "landscape",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "color": "#f9f5ed"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "color": "#f5f5f5"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                            {
+                                "color": "#c9c9c9"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                            {
+                                "color": "#ffeb88"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                            {
+                                "color": "#91813D"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "color": "#A2D0F0"
+                            }
+                        ]
+                    }
+]               
+            });
+            // Locations
+            const locations = [
+                { lat: 51.058041359707445, lng: 3.730096393849001, title: "De Gentse Feesten", info: "Het programma van de Gentse Feesten raadplegen? De Gentse Feestenwebsite is 1 van de <b>600 applicaties</b> die District09 beheert.", img: "img/1.jpg" },
+                { lat: 34.0522, lng: -118.2437, title: "Visit Gent", info: "Toeristen rekenen op District09 om <b>digitaal de juiste informatie te vinden</b> voor hun bezoek aan Gent, via de website visit.gent of via de <b>datatafel</b> in het Tourist Information Center.", img: "img/2.jpg" },
+                { lat: 41.8781, lng: -87.6298, title: "Stadskantoor", info: "Het nieuwe Stadskantoor aan de Zuid, werd door District09 uitgerust met internetconnectie, <b>digital signage</b>, een transparante led wall en moderne vergaderapparatuur. De restwarmte van het ondergrondse <b>datacenter</b> verwarmt het gebouw.", img: "img/3.jpg" },
+                // Add more locations as needed
+            ];
+
+            // Optionally, you can add markers or other map features here
+            // For example, to add a marker at the center coordinates:
+            locations.forEach(location => {
+                const pinBackground = new PinElement({
+                    background: '#FBBC04',
+                });
+                
+                const marker = new google.maps.AdvancedMarkerElement({
+                    position: location, // Marker position
+                    map: map, // Map to add the marker to
+                    content: pinBackground.element,
+                    title: location.info, // Marker title (tooltip)
+                });
+
+                // Create an info window for the marker
+                const infoWindow = new google.maps.InfoWindow({
+                    content: location.info, // Content of the info window
+                    ariaLabel: location.title
+                });
+
+                // Add a click event listener to open the info window when the marker is clicked
+                marker.addListener('click', function() {
+                    infoWindow.open(map, marker);
+                });
+            });
+        }
+    </script>
+
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUmjWjaJAsIUbZguKeB58rlSBxKTdC2C8&callback=initMap">
+    </script>
+</body>
+</html>

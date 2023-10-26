@@ -1,9 +1,11 @@
 <html>
 <head>
     <title>District09 @Trefdag</title>
-    <!-- Replace 'YOUR_API_KEY' with your Google Maps API key -->
+
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Sans" rel="stylesheet"> 
     <style>
-        
+        @import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,300,300italic,400italic,500,500italic,700,700italic);
         /* Remove all margins and padding */
         html, body {
             margin: 0;
@@ -21,11 +23,24 @@
             left: 0;
             width: 100%;
             height: 10vh; /* 10% of the viewport height */
-            background-color: #409ec6; /* Header background color */
-            color: #fff; /* Header text color */
-            text-align: center;
+            background-color: white; /* #409ec6;  Header background color */
+            color: #409ec6; /* Header text color */
+            text-align: left;
             z-index: 1; /* Ensure the header is above the map */
+			background-image:    url(img/logo.svg);
+			background-size:     contain;                      /* <------ */
+			background-repeat:   no-repeat;
+			background-position: left center;  
+			padding-left: 15%;
+			font-family: "Fira Sans";
+			line-height: 5;
+			font-weight: bold;
+			font-size: 20px;
+			
         }
+		header img {
+			
+		}		
         /* Set the size of the map container */
         #map {
             height: 100vh;
@@ -34,7 +49,7 @@
 </head>
 
 <body>
-    <header></header>
+    <header>(on)zichtbaar doorheen heel de stad</header>
     <div id="map"></div>
 
     <script>
@@ -151,18 +166,18 @@
             // Locations
             const locations = [
                 { lat: 51.058041359707445, lng: 3.730096393849001, title: "De Gentse Feesten", info: "Het programma van de Gentse Feesten raadplegen? De Gentse Feestenwebsite is 1 van de <b>600 applicaties</b> die District09 beheert.", id: 1 },
-                { lat: 34.0522, lng: -118.2437, title: "Visit Gent", info: "Toeristen rekenen op District09 om <b>digitaal de juiste informatie te vinden</b> voor hun bezoek aan Gent, via de website visit.gent of via de <b>datatafel</b> in het Tourist Information Center.", id: 2 },
-                { lat: 41.8781, lng: -87.6298, title: "Stadskantoor", info: "Het nieuwe Stadskantoor aan de Zuid, werd door District09 uitgerust met internetconnectie, <b>digital signage</b>, een transparante led wall en moderne vergaderapparatuur. De restwarmte van het ondergrondse <b>datacenter</b> verwarmt het gebouw.", id: 3 },
-                { lat: 41.8781, lng: -87.6298, title: "Fietstelpalen", info: "Dagelijks ﬁetsen 7.000 ﬁetsers langs de drukke ﬁetsas Coupure Links. Dit en nog veel meer kun je nagaan op <b>het open data portaal</b> van Gent en District09." , id: 4 },
-                { lat: 41.8781, lng: -87.6298, title: "Digipunten", info: "Dit Digipunt is één van de 36 plaatsen in Gent waar je terecht kan met je digitale vragen. Het stedelijke e-inclusieprogramma, geleid door District09, maakt Gentenaars digitaal wegwijs." , id: 5 },
-                { lat: 41.8781, lng: -87.6298, title: "De collectie van de Gentenaar", info: "District09 realiseerde met het digitaal innovatie-project ‘Collectie van de Gentenaar’ één grote digitaal raadpleegbare catalogus van erfgoed in Gent, uit de Gentse musea, maar ook met waardevolle objecten die burgers zelf konden aanvullen.", id: 6 },
-                { lat: 41.8781, lng: -87.6298, title: "UiTPas – Stadswinkel in het Belfort", info: "Kansentarief bij cultuur- en sportactiviteiten met je UiTPas? Daar hoef je niet langer attesten voor te verzamelen. <b>Dankzij het slim koppelen van data volstaat het om je ID-kaart in te lezen</b>. Een voorbeeld van de proactieve dienstverlening die we in Gent uitrollen.", id: 7 },
-                { lat: 41.8781, lng: -87.6298, title: "Woonzorgcentra", info: "District09 staat in voor alle digitale oplossingen in alle woonzorgcentra in Gent, van persoonlijke alarmsystemen tot connectiviteit en videosystemen.", id: 8 },
-                { lat: 41.8781, lng: -87.6298, title: "Datacenters", info: "Campus Prins Filip: één van de twee datacenters die District09 beheert.", id: 9 },
-				{ lat: 41.8781, lng: -87.6298, title: "Open Services", info: "District09 publiceert niet alleen Open Data maar onderhoudt ook <b>Open Services, publieke APIs die toegang geven tot allerhande businesssystemen van de Stad</b>. Zo maken we onder meer openbaar vervoer toegankelijker voor blinden en slechtzienden.", id: 10 },
-				{ lat: 41.8781, lng: -87.6298, title: "45km glasvezelnetwerk", info: "District09 beheert een eigen glasvezelnetwerk dat alle stadsdienstenten verbindt. Recent werd dit uitgebreid naar de wijk Muide-Meulestede.", id: 11 },
-				{ lat: 41.8781, lng: -87.6298, title: "Voetgangersgebied", info: "De LEZ-zone, het parkeerbeleid, het voetgangersgebied… District09 faciliteert het Gentse mobiliteitsbeleid met <b> software en ANPR cameras</b> in de straten en de parkings.", id: 12 },
-				{ lat: 41.8781, lng: -87.6298, title: "Stedelijk Onderwijs", info: "District09 helpt de scholen van het Gentse stedelijk onderwijs bij het <b>realiseren van de digisprong</b>, met netwerkverbinding, software voor administratief personeel, digitale borden in de leslokalen en de nodige ondersteuning. ", id: 13 }
+                { lat: 51.05639998311194, lng: 3.7213558167552954, title: "Visit Gent", info: "Toeristen rekenen op District09 om <b>digitaal de juiste informatie te vinden</b> voor hun bezoek aan Gent, via de website visit.gent of via de <b>datatafel</b> in het Tourist Information Center.", id: 2 },
+                { lat: 51.04769359761762, lng: 3.730693784881823, title: "Stadskantoor", info: "Het nieuwe Stadskantoor aan de Zuid, werd door District09 uitgerust met internetconnectie, <b>digital signage</b>, een transparante led wall en moderne vergaderapparatuur. De restwarmte van het ondergrondse <b>datacenter</b> verwarmt het gebouw.", id: 3 },
+                { lat: 51.04777224208196, lng: 3.720680501526179, title: "Fietstelpalen", info: "Dagelijks ﬁetsen 7.000 ﬁetsers langs de drukke ﬁetsas Coupure Links. Dit en nog veel meer kun je nagaan op <b>het open data portaal</b> van Gent en District09." , id: 4 },
+                { lat: 51.04864643824397, lng: 3.728703889670419, title: "Digipunten", info: "Dit Digipunt is één van de 36 plaatsen in Gent waar je terecht kan met je digitale vragen. Het stedelijke e-inclusieprogramma, geleid door District09, maakt Gentenaars digitaal wegwijs." , id: 5 },
+                { lat: 51.054778931277475, lng: 3.717909609496937, title: "De collectie van de Gentenaar", info: "District09 realiseerde met het digitaal innovatie-project ‘Collectie van de Gentenaar’ één grote digitaal raadpleegbare catalogus van erfgoed in Gent, uit de Gentse musea, maar ook met waardevolle objecten die burgers zelf konden aanvullen.", id: 6 },
+                { lat: 51.05378315923798, lng: 3.7248943080311587, title: "UiTPas – Stadswinkel in het Belfort", info: "Kansentarief bij cultuur- en sportactiviteiten met je UiTPas? Daar hoef je niet langer attesten voor te verzamelen. <b>Dankzij het slim koppelen van data volstaat het om je ID-kaart in te lezen</b>. Een voorbeeld van de proactieve dienstverlening die we in Gent uitrollen.", id: 7 },
+                { lat: 51.0345701806472, lng: 3.7507522320972217, title: "Woonzorgcentra", info: "District09 staat in voor alle digitale oplossingen in alle woonzorgcentra in Gent, van persoonlijke alarmsystemen tot connectiviteit en videosystemen.", id: 8 },
+                { lat: 51.04503141469156, lng: 3.7081679867311688, title: "Datacenters", info: "Campus Prins Filip: één van de twee datacenters die District09 beheert.", id: 9 },
+				{ lat: 51.047680745835535, lng: 3.72971857257621, title: "Open Services", info: "District09 publiceert niet alleen Open Data maar onderhoudt ook <b>Open Services, publieke APIs die toegang geven tot allerhande businesssystemen van de Stad</b>. Zo maken we onder meer openbaar vervoer toegankelijker voor blinden en slechtzienden.", id: 10 },
+				{ lat: 51.07229032773081, lng: 3.7316405976949927, title: "45km glasvezelnetwerk", info: "District09 beheert een eigen glasvezelnetwerk dat alle stadsdienstenten verbindt. Recent werd dit uitgebreid naar de wijk Muide-Meulestede.", id: 11 },
+				{ lat: 51.050198506593915, lng: 3.7264374265474256, title: "Voetgangersgebied", info: "De LEZ-zone, het parkeerbeleid, het voetgangersgebied… District09 faciliteert het Gentse mobiliteitsbeleid met <b> software en ANPR cameras</b> in de straten en de parkings.", id: 12 },
+				{ lat: 51.03762506062489, lng: 3.71386610141149, title: "Stedelijk Onderwijs", info: "District09 helpt de scholen van het Gentse stedelijk onderwijs bij het <b>realiseren van de digisprong</b>, met netwerkverbinding, software voor administratief personeel, digitale borden in de leslokalen en de nodige ondersteuning. ", id: 13 }
 				
             ];
 
